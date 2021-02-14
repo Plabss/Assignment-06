@@ -4,9 +4,10 @@ const galleryHeader = document.querySelector('.gallery-header');
 const searchBtn = document.getElementById('search-btn');
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
-// selected image 
-let sliders = [];
 
+// selected image 
+
+let sliders = [];
 
 // If this key doesn't work
 // Find the name in the url and go to their website
@@ -24,12 +25,8 @@ const showImages = (images) => {
     div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
     div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
     gallery.appendChild(div)
-
-
   })
   showSpinner();
-
-
 }
 
 const getImages = (query) => {
@@ -96,10 +93,6 @@ const createSlider = () => {
     }
   }
 
-
-
-
-
   const duration = Time();
   sliders.forEach(slide => {
     let item = document.createElement('div')
@@ -109,7 +102,9 @@ const createSlider = () => {
     alt="">`;
     sliderContainer.appendChild(item)
   })
+
   changeSlide(0)
+
   timer = setInterval(function () {
     slideIndex++;
     changeSlide(slideIndex);
@@ -117,11 +112,13 @@ const createSlider = () => {
 }
 
 // change slider index 
+
 const changeItem = index => {
   changeSlide(slideIndex += index);
 }
 
 // change slide item
+
 const changeSlide = (index) => {
 
   const items = document.querySelectorAll('.slider-item');
@@ -150,6 +147,8 @@ function buttonClick() {
   sliders.length = 0;
 }
 
+// Enter Button
+
 const input = document.getElementById("search")
 input.addEventListener("keypress", function (event) {
   if (event.key == "Enter") {
@@ -161,9 +160,16 @@ sliderBtn.addEventListener('click', function () {
   createSlider()
 })
 
-
+// Extra feature! Show a spinner while loading data from API
 
 function showSpinner() {
   const spinner = document.getElementById("spinner")
   spinner.classList.toggle("d-none");
 }
+
+
+// Extra feature! Create a button for stop the slider.
+
+document.getElementById("stopbtn").addEventListener("click", function () {
+  document.getElementById("main").style.display = "none";
+})
