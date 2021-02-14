@@ -83,7 +83,7 @@ const createSlider = () => {
   function Time() {
     let time = parseInt(document.getElementById("duration").value)
     if (time < 0) {
-      alert("You have to put positive value! ");
+      alert("You have to put positive value!  Slider consider absolute value of your input as default. ");
       time = (-1) * time;
       return time;
     } else if (time > 0) {
